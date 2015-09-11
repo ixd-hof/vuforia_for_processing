@@ -15,10 +15,10 @@ void setup()
     0.0, -0.0027777778, 1.002002, 1.0, 
     0.0, 0.0, -4.004004, 0.0);
   pv.transpose();
-  
+
   pv.print();
   printMatrix();
-  applyMatrix(pv);
+  //applyMatrix(pv);
   printMatrix();
 
   mv = new PMatrix3D[6];
@@ -71,10 +71,10 @@ void draw()
   background(img[index]);
   //image(img[index], 0, 0);
 
-  //translate(width/2, height/2, 0); // -433
+  translate(width/2, height/2, -433); // -433
 
   //applyMatrix(new PMatrix3D());
-  applyMatrix(pv);
+  //applyMatrix(pv);
 
   PMatrix3D mv___ = mv_.get();
   //mv___.transpose();
@@ -129,9 +129,10 @@ void keyPressed()
 
   if (key == 't')
     mv_.transpose();
-
-  if (key == 'i')
+  else if (key == 'i')
     mv_.invert();
+  else if (key == 'p')
+    saveFrame("overlay_####.jpg");
 
   mv_.print();
 }
